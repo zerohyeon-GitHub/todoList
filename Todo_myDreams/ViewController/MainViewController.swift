@@ -65,7 +65,7 @@ class MainViewController: UIViewController {
         mainStackView.setCustomSpacing(30, after: gotoListView)
         
         // Completed Todo List 이동
-        gotoCompletedView.setTitle("Todo List Button", for: .normal)
+        gotoCompletedView.setTitle("Completed Todo List Button", for: .normal)
         gotoCompletedView.setTitleColor(.black, for: .normal)
         
         gotoCompletedView.tintColor = UIColor.green
