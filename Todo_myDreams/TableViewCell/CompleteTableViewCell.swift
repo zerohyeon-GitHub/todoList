@@ -27,16 +27,16 @@ class CompleteTableViewCell: UITableViewCell {
     }
 
     func setLabel() {
-        todoName.backgroundColor = .blue
-        
-        todoDate.backgroundColor = .yellow
+//        todoName.backgroundColor = .blue
+
+//        todoDate.backgroundColor = .yellow
     }
     
     func setStackView(){
         completedStackView.alignment = .fill
-        completedStackView.distribution = .fill
+        completedStackView.distribution = .fillEqually
         
         completedStackView.spacing = 30
-        completedStackView.backgroundColor = .green
+//        completedStackView.backgroundColor = .green
     }
 }

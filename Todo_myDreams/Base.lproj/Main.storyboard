@@ -23,10 +23,10 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rho-lH-bV5">
-                                <rect key="frame" x="20" y="253.33333333333334" width="353" height="345.33333333333326"/>
+                                <rect key="frame" x="159" y="391.66666666666669" width="75" height="68.666666666666686"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRk-jb-Zcn">
-                                        <rect key="frame" x="0.0" y="0.0" width="353" height="172.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -34,7 +34,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ems-Fn-HEx">
-                                        <rect key="frame" x="0.0" y="172.66666666666669" width="353" height="172.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="34.333333333333314" width="75" height="34.333333333333343"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -44,7 +44,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHt-UG-2Zf">
-                                <rect key="frame" x="20" y="698.66666666666663" width="353" height="149.33333333333337"/>
+                                <rect key="frame" x="20" y="777.66666666666663" width="353" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,18 +53,14 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="BHt-UG-2Zf" secondAttribute="bottom" constant="20" id="752-oF-uxX"/>
                             <constraint firstItem="eZ4-cA-2tM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="Aoh-ec-MUf"/>
+                            <constraint firstItem="rho-lH-bV5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CJR-sT-3ZP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="BHt-UG-2Zf" secondAttribute="trailing" constant="20" id="PEX-NP-2RW"/>
                             <constraint firstItem="eZ4-cA-2tM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="U2t-Gd-hal"/>
-                            <constraint firstItem="BHt-UG-2Zf" firstAttribute="top" secondItem="rho-lH-bV5" secondAttribute="bottom" constant="100" id="Ynd-jk-Cux"/>
                             <constraint firstItem="BHt-UG-2Zf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="ZBw-fk-xvu"/>
-                            <constraint firstItem="rho-lH-bV5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aka-aj-DJT"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="rho-lH-bV5" secondAttribute="trailing" constant="20" id="d4E-d8-w5E"/>
-                            <constraint firstItem="rho-lH-bV5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="dfz-iz-4fb"/>
-                            <constraint firstItem="rho-lH-bV5" firstAttribute="top" secondItem="eZ4-cA-2tM" secondAttribute="bottom" constant="100" id="gpj-N5-Th9"/>
-                            <constraint firstItem="BHt-UG-2Zf" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="30" id="hje-kw-2gw"/>
+                            <constraint firstItem="rho-lH-bV5" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="be3-ka-oY9"/>
                             <constraint firstAttribute="trailing" secondItem="eZ4-cA-2tM" secondAttribute="trailing" constant="20" id="lbb-Au-yH4"/>
-                            <constraint firstItem="rho-lH-bV5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="tju-Ui-3Gw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="mJ5-8x-93V"/>
@@ -117,7 +113,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WdS-yy-HoA">
-                                                            <rect key="frame" x="304" y="0.0" width="51" height="31.333333333333329"/>
+                                                            <rect key="frame" x="304" y="0.0" width="51" height="31.333333333333332"/>
                                                             <connections>
                                                                 <action selector="switchChange:" destination="Ogf-zb-OZm" eventType="valueChanged" id="2Bp-HY-Ojn"/>
                                                             </connections>
@@ -249,6 +245,7 @@
                     <navigationItem key="navigationItem" title="Navigation Item" id="fw4-kG-1dh"/>
                     <connections>
                         <outlet property="completeTableView" destination="Qag-f9-Eom" id="e8l-5J-XAf"/>
+                        <outlet property="searchData" destination="SG6-Zm-enN" id="cbG-vv-Kbe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G3u-mc-rPl" sceneMemberID="firstResponder"/>

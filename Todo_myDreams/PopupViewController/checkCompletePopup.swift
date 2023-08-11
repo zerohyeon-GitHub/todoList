@@ -198,7 +198,7 @@ class checkCompletePopup: UIViewController {
             completion?()
         }
 
-//        buttonStackView.addArrangedSubview(button)
+        buttonStackView.addArrangedSubview(button)
     }
 
     private func setupViews() {

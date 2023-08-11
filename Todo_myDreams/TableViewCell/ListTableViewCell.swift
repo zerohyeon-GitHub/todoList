@@ -30,12 +30,16 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func setLabel() {
-        todoName.backgroundColor = .blue
+//        todoName.backgroundColor = .blue
     }
     
     func setSwich(){
-        completedSwitch.isOn = false
-        completedSwitch.backgroundColor = .yellow
+        if User.userTodo[cellIndex].complete {
+            completedSwitch.isOn = true
+            todoName.attributedText = todoName.text?.strikeThrough()
+        } else {
+            completedSwitch.isOn = false
+        }
         
         completedSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
     }
@@ -45,7 +49,8 @@ class ListTableViewCell: UITableViewCell {
         cellStackView.distribution = .fill
         
         cellStackView.spacing = 30
-        cellStackView.backgroundColor = .green
+        cellStackView.alignment = .center
+//        cellStackView.backgroundColor = .green
     }
     
     @IBAction func switchChange(_ sender: Any) {

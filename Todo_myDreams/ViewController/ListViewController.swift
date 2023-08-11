@@ -68,6 +68,8 @@ class ListViewController: UIViewController {
         titleName.sizeToFit()
          
         navigationItem.titleView = titleName
+        
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     func setCurrentTime() {
@@ -81,6 +83,13 @@ class ListViewController: UIViewController {
     
     func setButton() {
         addBtn.setTitle("add Todo", for: .normal)
+        addBtn.setTitleColor(.black, for: .normal)
+        
+        addBtn.tintColor = UIColor.green
+        
+        addBtn.layer.cornerRadius = 10
+        addBtn.layer.borderWidth = 2
+        addBtn.layer.borderColor = UIColor.black.cgColor
     }
 }
 
@@ -111,5 +120,9 @@ extension ListViewController: UITableViewDataSource {
 extension ListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tab : \(indexPath)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }
