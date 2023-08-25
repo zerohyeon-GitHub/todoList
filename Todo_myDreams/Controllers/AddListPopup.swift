@@ -7,11 +7,10 @@
 
 import UIKit
 
-class addListPopup: UIViewController {
+class AddListPopup: UIViewController {
     let storyboardName = "Main" // 생성된 storyboard의 이름이 "Main"
     let storyboardID = "addTodo"
     
-    let user = User()
     var completion: (() -> Void)?
     
     @IBOutlet weak var nameStack: UIStackView!
@@ -43,20 +42,20 @@ class addListPopup: UIViewController {
 
 
     @IBAction func saveData(_ sender: Any) {
-        
         // 현재 시간
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let currentDate = formatter.string(from: Date())
         
-        let data: Todo = Todo(goal: tvName.text ?? "", date: tvName.text ?? currentDate, complete: false, memo: tvName.text ?? "")
+        let data: DataTodo = DataTodo(type: "", goal: tvName.text ?? "", date: tvName.text ?? currentDate, iscompleted: false, memo: tvName.text ?? "")
         
-        user.appendTodo(todo: data)
+        DataManager.shared.save(todo: [data])
         
-        
-//        let refreshControl = UIRefreshControl()
-//        refreshControl.endRefreshing() // 초기화 - refresh 종료
-//        ListViewController().listTableView.refreshControl = refreshControl
+        print("userdefault count : \(DataManager.shared.loadUsers().count)")
+        for i in 0..<DataManager.shared.loadUsers().count {
+            print("\(i) : \(DataManager.shared.loadUsers()[i])")
+        }
+
         completion?()
         self.dismiss(animated: true)
     }

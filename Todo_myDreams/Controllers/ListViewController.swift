@@ -42,12 +42,12 @@ class ListViewController: UIViewController {
     }
 
     @IBAction func addTodo(_ sender: Any) {
-        let addViewController = addListPopup()
+        let addViewController = AddListPopup()
         let storyboardName = addViewController.storyboardName
         let storyboardID = addViewController.storyboardID
         
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main) // Main.stroyboard와 연동하는 작업 (변수에 담는 작업)
-        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? addListPopup else { return }
+        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? AddListPopup else { return }
         
         viewController.completion = { // [weak self] in  // ARC
             self.listTableView.reloadData()
@@ -69,7 +69,7 @@ class ListViewController: UIViewController {
          
         navigationItem.titleView = titleName
         
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .blue
     }
     
     func setCurrentTime() {
@@ -97,7 +97,7 @@ extension ListViewController: UITableViewDataSource {
     // tableView에 표시할 행의 수를 return
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        return User.userTodo.count
+        return DataManager.shared.loadUsers().count
     }
     
     // cell에 표시하기 위한 Cell을 만들어서 return 한다.
@@ -107,7 +107,7 @@ extension ListViewController: UITableViewDataSource {
         // cell index 값을 확인하기 위해서
         cell.cellIndex = indexPath.row
         
-        cell.todoName.text = User.userTodo[indexPath.row].goal
+        cell.todoName.text = DataManager.shared.loadUsers()[indexPath.row].goal
         
         cell.setStackView()
         cell.setLabel()
@@ -124,7 +124,7 @@ extension ListViewController: UITableViewDataSource {
         if editingStyle == .delete {
             tableView.beginUpdates()
             
-            User.userTodo.remove(at: indexPath.row)
+//            User.userTodo.remove(at: indexPath.row)
             
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()

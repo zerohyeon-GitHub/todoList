@@ -23,7 +23,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rho-lH-bV5">
-                                <rect key="frame" x="159" y="391.66666666666669" width="75" height="68.666666666666686"/>
+                                <rect key="frame" x="159" y="374.66666666666669" width="75" height="103"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qRk-jb-Zcn">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="34.333333333333336"/>
@@ -39,6 +39,14 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
                                             <segue destination="Oj5-4j-w3G" kind="show" id="mAO-9Y-0le"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njh-tO-vBg">
+                                        <rect key="frame" x="0.0" y="68.666666666666629" width="75" height="34.333333333333343"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="moveURL:" destination="BYZ-38-t0r" eventType="touchUpInside" id="g8r-Ha-rnO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -67,10 +75,9 @@
                     <connections>
                         <outlet property="appName" destination="BHt-UG-2Zf" id="H4J-x0-cid"/>
                         <outlet property="appTitle" destination="eZ4-cA-2tM" id="Grr-6S-KhE"/>
-                        <outlet property="btnCompletedView" destination="ems-Fn-HEx" id="ztx-R7-Mgx"/>
-                        <outlet property="btnListView" destination="qRk-jb-Zcn" id="nMy-6v-Z4N"/>
                         <outlet property="gotoCompletedView" destination="ems-Fn-HEx" id="x3O-Vm-plS"/>
                         <outlet property="gotoListView" destination="qRk-jb-Zcn" id="IvH-4s-yJO"/>
+                        <outlet property="gotoURLView" destination="njh-tO-vBg" id="chf-Pe-C15"/>
                         <outlet property="mainStackView" destination="rho-lH-bV5" id="KoK-YU-Dnt"/>
                     </connections>
                 </viewController>
@@ -255,7 +262,7 @@
         <!--Add List Popup-->
         <scene sceneID="ybO-Ge-CaO">
             <objects>
-                <viewController storyboardIdentifier="addTodo" id="fp3-NC-NAE" customClass="addListPopup" customModule="Todo_myDreams" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addTodo" id="fp3-NC-NAE" customClass="AddListPopup" customModule="Todo_myDreams" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GIt-yS-phx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

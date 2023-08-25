@@ -34,7 +34,7 @@ class ListTableViewCell: UITableViewCell {
     }
     
     func setSwich(){
-        if User.userTodo[cellIndex].complete {
+        if DataManager.shared.loadUsers()[cellIndex].iscompleted {
             completedSwitch.isOn = true
             todoName.attributedText = todoName.text?.strikeThrough()
         } else {
@@ -57,11 +57,11 @@ class ListTableViewCell: UITableViewCell {
         if completedSwitch.isOn {
             todoName.attributedText = todoName.text?.strikeThrough()
             
-            User.userTodo[cellIndex].complete = true
+//            DataManager.shared.loadUsers()[cellIndex].iscompleted = true
         } else {
             todoName.attributedText = todoName.text?.clear()
             
-            User.userTodo[cellIndex].complete = false
+//            DataManager.shared.loadUsers()[cellIndex].iscompleted = false
         }
     }
 }
@@ -75,6 +75,7 @@ extension String {
     
     func clear() -> NSAttributedString {
         let attributeString = NSMutableAttributedString(string: self)
+        // removeAttribute - 이걸로 바꿔야겠다.
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, 0))
         return attributeString
     }
