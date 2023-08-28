@@ -22,21 +22,16 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("userdefault count : \(DataManager.shared.loadUsers().count)")
-        for i in 0..<DataManager.shared.loadUsers().count {
-            print("\(i) : \(DataManager.shared.loadUsers()[i])")
-        }
-        
         // 데이터가 없는 경우 임의로 넣어줌
-        if DataManager.shared.loadUsers().isEmpty {
-            let data1: DataTodo = DataTodo(type: "", goal: "스쿼트 200kg", date: "2023-12-20", iscompleted: false, memo: "현재 350lb")
-            let data2: DataTodo = DataTodo(type: "", goal: "데드리프트 250kg", date: "2023-12-25", iscompleted: false, memo: "현재 420lb")
-            let data3: DataTodo = DataTodo(type: "", goal: "벤치프레스 150kg", date: "2023-12-30", iscompleted: false, memo: "현재 100kg")
+        if DataManager.shared.load().isEmpty {
+            let data1: DataTodo = DataTodo(type: "Exercise", goal: "스쿼트 200kg", date: "2023-12-20", iscompleted: false, memo: "현재 350lb")
+            let data2: DataTodo = DataTodo(type: "Exercise", goal: "데드리프트 250kg", date: "2023-12-25", iscompleted: false, memo: "현재 420lb")
+            let data3: DataTodo = DataTodo(type: "Exercise", goal: "벤치프레스 150kg", date: "2023-12-30", iscompleted: false, memo: "현재 100kg")
+            let data4: DataTodo = DataTodo(type: "Study", goal: "Swift 폭풍 공부", date: "2023-12-30", iscompleted: false, memo: "아직 기초단계 ㅜ")
+            let data5: DataTodo = DataTodo(type: "Study", goal: "영어 Master", date: "2023-12-30", iscompleted: false, memo: "스페인을 가기 위한 기반!")
+            let data6: DataTodo = DataTodo(type: "Cooking", goal: "파스타 Master", date: "2023-12-30", iscompleted: false, memo: "면을 삷고 파스타 소스를 붓기만 잘함.")
             
-            DataManager.shared.save(todo: [data1, data2, data3])
-            
-            print("userDefault 데이터")
-            print(DataManager.shared.loadUsers())
+            DataManager.shared.save(todo: [data1, data2, data3, data4, data5, data6])
         }
         
         setLabel()

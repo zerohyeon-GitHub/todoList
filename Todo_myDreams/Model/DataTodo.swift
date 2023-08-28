@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
-struct DataTodo: Codable { // 아카이빙, 언카이빙을 위해서 UserDefaults를 사용할 struct에 Codable 프로토콜 준수 ???
+enum TypeList: String, CaseIterable { // CaseIterable 과연 이건 뭘까??
+    case Exercise = "Exercise"
+    case Study = "Study"
+    case Cooking = "Cooking"
+}
+
+struct DataTodo: Codable, Hashable { // 아카이빙, 언카이빙을 위해서 UserDefaults를 사용할 struct에 Codable 프로토콜 준수 ???
     var type: String    // 타입
     var goal: String    // 목표
     var date: String    // 완료 일정

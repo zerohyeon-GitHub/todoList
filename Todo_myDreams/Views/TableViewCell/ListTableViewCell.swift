@@ -11,7 +11,9 @@ class ListTableViewCell: UITableViewCell {
 
     let storyboardID = "listCell"
     
-    var cellIndex: Int = 0
+    var datakeyIndex: Int = 0 // 선택한 데이터의 UserDefaults 상의 index를 얻기 위해서
+    var cellSection: Int = 0 // cell section의 값
+    var cellIndex: Int = 0 // section 간 cell의 index
     
     @IBOutlet weak var cellStackView: UIStackView!
     
@@ -33,8 +35,8 @@ class ListTableViewCell: UITableViewCell {
 //        todoName.backgroundColor = .blue
     }
     
-    func setSwich(){
-        if DataManager.shared.loadUsers()[cellIndex].iscompleted {
+    func setSwich(state: Bool){
+        if state {
             completedSwitch.isOn = true
             todoName.attributedText = todoName.text?.strikeThrough()
         } else {
@@ -57,11 +59,11 @@ class ListTableViewCell: UITableViewCell {
         if completedSwitch.isOn {
             todoName.attributedText = todoName.text?.strikeThrough()
             
-//            DataManager.shared.loadUsers()[cellIndex].iscompleted = true
+            DataManager.shared.modifyIsCompleted(index: datakeyIndex, iscompleted: true)
         } else {
             todoName.attributedText = todoName.text?.clear()
             
-//            DataManager.shared.loadUsers()[cellIndex].iscompleted = false
+            DataManager.shared.modifyIsCompleted(index: datakeyIndex, iscompleted: false)
         }
     }
 }
@@ -76,7 +78,8 @@ extension String {
     func clear() -> NSAttributedString {
         let attributeString = NSMutableAttributedString(string: self)
         // removeAttribute - 이걸로 바꿔야겠다.
-        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, 0))
+        attributeString.removeAttribute(NSAttributedString.Key.strikethroughStyle, range: NSMakeRange(0, attributeString.length))
+//        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSMakeRange(0, 0))
         return attributeString
     }
 }

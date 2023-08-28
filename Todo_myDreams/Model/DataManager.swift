@@ -30,8 +30,8 @@ class DataManager {
         var dataDB: [DataTodo] = []
         
         // UserDefaults에 파일이 있는지 확인.
-        if !loadUsers().isEmpty {
-            dataDB = loadUsers() // 있는 경우 해당 항목에 추가
+        if !load().isEmpty {
+            dataDB = load() // 있는 경우 해당 항목에 추가
         }
         
         // 받은 데이터 todo의 갯수를 파악
@@ -46,7 +46,7 @@ class DataManager {
     }
     
     // JSONDecoder를 이용 언아카이빙하여 로드
-    func loadUsers() -> [DataTodo] {
+    func load() -> [DataTodo] {
         let decoder = JSONDecoder()
         if let savedUsers = UserDefaults.standard.object(forKey: todoDataKey) as? Data {
             if let loadedUsers = try? decoder.decode([DataTodo].self, from: savedUsers) {
@@ -54,5 +54,42 @@ class DataManager {
             }
         }
         return []
+    }
+    
+    // type, goal, date, iscompleted, memo
+    func modifyIsCompleted(index: Int, iscompleted: Bool){
+        var dataDB: [DataTodo] = []
+        
+        // 현재 가지고 있는 todo data 파악
+        if !load().isEmpty {
+            dataDB = load() // 있는 경우 해당 항목에 추가
+        }
+        
+        // 해당되는 index의 데이터를 변경
+        dataDB[index].iscompleted = iscompleted
+        
+        // 새로이 UserDefaults에 데이터를 저장한다.
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(dataDB) { // encoded는 Data형
+            UserDefaults.standard.set(encoded, forKey: todoDataKey)
+        }
+    }
+    
+    func delete(index: Int){
+        var dataDB: [DataTodo] = []
+        
+        // 현재 가지고 있는 todo data 파악
+        if !load().isEmpty {
+            dataDB = load() // 있는 경우 해당 항목에 추가
+        }
+        
+        // 해당되는 index의 데이터를 제거
+        dataDB.remove(at: index)
+        
+        // 새로이 UserDefaults에 데이터를 저장한다.
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(dataDB) { // encoded는 Data형
+            UserDefaults.standard.set(encoded, forKey: todoDataKey)
+        }
     }
 }
