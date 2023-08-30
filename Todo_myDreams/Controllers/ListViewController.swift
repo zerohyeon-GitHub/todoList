@@ -71,12 +71,12 @@ class ListViewController: UIViewController {
     }
     
     @IBAction func addTodo(_ sender: Any) {
-        let addViewController = AddListPopup()
+        let addViewController = AddTodoViewController()
         let storyboardName = addViewController.storyboardName
         let storyboardID = addViewController.storyboardID
         
         let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main) // Main.stroyboard와 연동하는 작업 (변수에 담는 작업)
-        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? AddListPopup else { return }
+        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? AddTodoViewController else { return }
         
         viewController.completion = { // [weak self] in  // ARC
             self.listTableView.reloadData()

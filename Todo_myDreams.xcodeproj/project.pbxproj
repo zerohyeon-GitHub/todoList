@@ -15,7 +15,7 @@
 		EB0AE8492A78D99200A1BBA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB0AE8472A78D99200A1BBA4 /* LaunchScreen.storyboard */; };
 		EB0AE8512A78DB8E00A1BBA4 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8502A78DB8E00A1BBA4 /* ListViewController.swift */; };
 		EB0AE8532A78DBA400A1BBA4 /* CompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8522A78DBA400A1BBA4 /* CompleteViewController.swift */; };
-		EB0AE8572A78FAC500A1BBA4 /* AddListPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8562A78FAC500A1BBA4 /* AddListPopup.swift */; };
+		EB0AE8572A78FAC500A1BBA4 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8562A78FAC500A1BBA4 /* AddTodoViewController.swift */; };
 		EB0AE8592A78FAE000A1BBA4 /* checkCompletePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8582A78FAE000A1BBA4 /* checkCompletePopup.swift */; };
 		EB0AE85B2A7B7AA500A1BBA4 /* CompleteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE85A2A7B7AA500A1BBA4 /* CompleteTableViewCell.swift */; };
 		EB0AE85D2A81137300A1BBA4 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE85C2A81137300A1BBA4 /* ListTableViewCell.swift */; };
@@ -23,7 +23,6 @@
 		EB4A799D2A98742900C0CE3E /* Readme.md in Resources */ = {isa = PBXBuildFile; fileRef = EB4A799C2A98742900C0CE3E /* Readme.md */; };
 		EB4A799F2A987E1500C0CE3E /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4A799E2A987E1500C0CE3E /* DataManager.swift */; };
 		EB4A79A42A98B98700C0CE3E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB4A79A32A98B98700C0CE3E /* HomeView.swift */; };
-		EBBFB6372A9C3AF700FB5522 /* DatePickerPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBFB6362A9C3AF700FB5522 /* DatePickerPopupView.swift */; };
 		EBC763902A84F02300D55986 /* showCompleteInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBC7638F2A84F02300D55986 /* showCompleteInfo.swift */; };
 		EBED72F32A961147005979B7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBED72F22A961147005979B7 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -39,7 +38,7 @@
 		EB0AE84A2A78D99200A1BBA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB0AE8502A78DB8E00A1BBA4 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		EB0AE8522A78DBA400A1BBA4 /* CompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteViewController.swift; sourceTree = "<group>"; };
-		EB0AE8562A78FAC500A1BBA4 /* AddListPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListPopup.swift; sourceTree = "<group>"; };
+		EB0AE8562A78FAC500A1BBA4 /* AddTodoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		EB0AE8582A78FAE000A1BBA4 /* checkCompletePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = checkCompletePopup.swift; sourceTree = "<group>"; };
 		EB0AE85A2A7B7AA500A1BBA4 /* CompleteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteTableViewCell.swift; sourceTree = "<group>"; };
 		EB0AE85C2A81137300A1BBA4 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
@@ -47,7 +46,6 @@
 		EB4A799C2A98742900C0CE3E /* Readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
 		EB4A799E2A987E1500C0CE3E /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		EB4A79A32A98B98700C0CE3E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		EBBFB6362A9C3AF700FB5522 /* DatePickerPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerPopupView.swift; sourceTree = "<group>"; };
 		EBC7638F2A84F02300D55986 /* showCompleteInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showCompleteInfo.swift; sourceTree = "<group>"; };
 		EBED72F22A961147005979B7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -117,11 +115,9 @@
 			children = (
 				EB0AE8422A78D99100A1BBA4 /* Main.storyboard */,
 				EB4A79A32A98B98700C0CE3E /* HomeView.swift */,
-				EB0AE8562A78FAC500A1BBA4 /* AddListPopup.swift */,
 				EB0AE8582A78FAE000A1BBA4 /* checkCompletePopup.swift */,
 				EBC7638F2A84F02300D55986 /* showCompleteInfo.swift */,
 				EBC7638E2A84C2C200D55986 /* TableViewCell */,
-				EBBFB6362A9C3AF700FB5522 /* DatePickerPopupView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -129,6 +125,7 @@
 		EB4A79A22A98B92300C0CE3E /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EB0AE8562A78FAC500A1BBA4 /* AddTodoViewController.swift */,
 				EB0AE8402A78D99100A1BBA4 /* MainViewController.swift */,
 				EB0AE8502A78DB8E00A1BBA4 /* ListViewController.swift */,
 				EB0AE8522A78DBA400A1BBA4 /* CompleteViewController.swift */,
@@ -218,7 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB0AE8572A78FAC500A1BBA4 /* AddListPopup.swift in Sources */,
+				EB0AE8572A78FAC500A1BBA4 /* AddTodoViewController.swift in Sources */,
 				EB4A79A42A98B98700C0CE3E /* HomeView.swift in Sources */,
 				EB0AE8412A78D99100A1BBA4 /* MainViewController.swift in Sources */,
 				EB0AE85B2A7B7AA500A1BBA4 /* CompleteTableViewCell.swift in Sources */,
@@ -227,7 +224,6 @@
 				EB4A799F2A987E1500C0CE3E /* DataManager.swift in Sources */,
 				EB0AE8512A78DB8E00A1BBA4 /* ListViewController.swift in Sources */,
 				EB0AE85D2A81137300A1BBA4 /* ListTableViewCell.swift in Sources */,
-				EBBFB6372A9C3AF700FB5522 /* DatePickerPopupView.swift in Sources */,
 				EB0AE8532A78DBA400A1BBA4 /* CompleteViewController.swift in Sources */,
 				EB0AE83F2A78D99100A1BBA4 /* SceneDelegate.swift in Sources */,
 				EB0AE8602A820CFE00A1BBA4 /* DataTodo.swift in Sources */,

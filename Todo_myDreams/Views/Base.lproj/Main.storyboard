@@ -259,10 +259,10 @@
             </objects>
             <point key="canvasLocation" x="1718.3206106870227" y="313.38028169014086"/>
         </scene>
-        <!--Add List Popup-->
+        <!--Add Todo View Controller-->
         <scene sceneID="ybO-Ge-CaO">
             <objects>
-                <viewController storyboardIdentifier="addTodo" id="fp3-NC-NAE" customClass="AddListPopup" customModule="Todo_myDreams" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addTodo" id="fp3-NC-NAE" customClass="AddTodoViewController" customModule="Todo_myDreams" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="GIt-yS-phx">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
