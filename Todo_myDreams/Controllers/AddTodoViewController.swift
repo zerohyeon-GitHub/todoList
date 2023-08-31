@@ -45,29 +45,37 @@ class AddTodoViewController: UIViewController {
         configPickerView()
         setupDatePicker()
         
+        setNavigationoBar()
         setStackView()
         setTitle()
         setButton()
+        setTextView()
     }
     
     
-    @IBAction func saveData(_ sender: Any) {
-        // 현재 시간
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let currentDate = formatter.string(from: Date())
+    
+    
+    // MARK: - Navigation Bar
+    func setNavigationoBar() {
+        self.navigationItem.title = "Todo List Add"
+        self.navigationController?.navigationBar.tintColor = .black
         
-        let data: DataTodo = DataTodo(type: tvType.text ?? "", goal: tvName.text ?? "", date: tvName.text ?? currentDate, iscompleted: false, memo: tvName.text ?? "")
-        
-        DataManager.shared.save(todo: [data])
-        
-        print("userdefault count : \(DataManager.shared.load().count)")
-        for i in 0..<DataManager.shared.load().count {
-            print("\(i) : \(DataManager.shared.load()[i])")
-        }
-        
-        completion?()
-        self.dismiss(animated: true)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
+        self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
+
+    }
+    
+    @objc private func editDetailPage(){
+//        // page 이동 함수
+//        let listViewController = ListViewController()
+//
+//        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main) // Main.stroyboard와 연동하는 작업 (변수에 담는 작업)
+//        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? ListViewController else { return }
+//
+//        navigationController?.pushViewController(viewController, animated: true)
+        print("editDetailPage")
+//        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
     }
     
     func setStackView(){
@@ -87,12 +95,6 @@ class AddTodoViewController: UIViewController {
     }
     
     func setTitle(){
-        pageName.text = "Todo 추가"
-        pageName.font = UIFont.boldSystemFont(ofSize: 18)
-        pageName.textColor = UIColor.black
-        pageName.sizeToFit()
-        pageName.textAlignment = .center
-        
         todoType.text = "타입"
         todoType.font = UIFont.boldSystemFont(ofSize: 18)
         todoType.textColor = UIColor.black
@@ -121,6 +123,33 @@ class AddTodoViewController: UIViewController {
         saveBtn.contentHorizontalAlignment = .right
     }
     
+    func setTextView(){
+        tvMemo.layer.borderWidth = 0.25
+        tvMemo.layer.borderColor = UIColor.lightGray.cgColor
+        tvMemo.layer.cornerRadius = 5.0
+    }
+    
+    // MARK: - Method & Action
+    @IBAction func saveData(_ sender: Any) {
+        // 현재 시간
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let currentDate = formatter.string(from: Date())
+        
+        let data: DataTodo = DataTodo(type: tvType.text ?? "", goal: tvName.text ?? "", date: tvName.text ?? currentDate, iscompleted: false, memo: tvName.text ?? "")
+        
+        DataManager.shared.save(todo: [data])
+        
+//        print("userdefault count : \(DataManager.shared.load().count)")
+//        for i in 0..<DataManager.shared.load().count {
+//            print("\(i) : \(DataManager.shared.load()[i])")
+//        }
+        print("saveData 완료")
+        TodoList().appendProject(index: DataManager.shared.load().count-1, todo: data)
+        
+        completion?()
+        self.dismiss(animated: true)
+    }
     
 }
 

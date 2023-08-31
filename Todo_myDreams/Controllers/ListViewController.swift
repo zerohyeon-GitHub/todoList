@@ -9,12 +9,7 @@ import UIKit
 
 class ListViewController: UIViewController {
     
-    // UserDefaults 데이터를 미리 선언하기 위해 - Type 별로 구분 (Dictionary 사용 - UserDefault의 index를 알기 위해서)
-    var listExercise: Array<Dictionary<Int, DataTodo>> = []
-    var listStudy: Array<Dictionary<Int, DataTodo>> = []
-    var listCooking: Array<Dictionary<Int, DataTodo>> = []
     
-    var listType: [String] = []
     
     @IBOutlet weak var currentTime: UILabel!
     @IBOutlet weak var listTableView: UITableView!
@@ -26,8 +21,8 @@ class ListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        initData()
+        print("viewDidLoad")
+        TodoList().initData()
         
         setTitle() // navigation title 설정
         setCurrentTime()// 현재 날짜 표시
@@ -43,31 +38,8 @@ class ListViewController: UIViewController {
     // full screen일 때만 실행됨.
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        print("viewWillAppear")
         listTableView.reloadData()
-    }
-    
-    // UserDefault 데이터 초기화
-    func initData() {
-        for i in 0..<DataManager.shared.load().count {
-            switch DataManager.shared.load()[i].type {
-            case TypeList.Exercise.rawValue:
-                listExercise.append([i : DataManager.shared.load()[i]])
-            case TypeList.Study.rawValue:
-                listStudy.append([i : DataManager.shared.load()[i]])
-            case TypeList.Cooking.rawValue:
-                listCooking.append([i : DataManager.shared.load()[i]])
-            default:
-                print("default")
-            }
-        }
-        print("listExercise : \(listExercise)")
-        print("listExercise : \(listStudy)")
-        print("listExercise : \(listCooking)")
-        
-        listType = TypeList.allCases.map {
-            $0.rawValue
-        }
     }
     
     @IBAction func addTodo(_ sender: Any) {
@@ -82,7 +54,8 @@ class ListViewController: UIViewController {
             self.listTableView.reloadData()
         }
         
-        present(viewController, animated: true)
+        navigationController?.pushViewController(viewController, animated: true)
+//        present(viewController, animated: true)
         
         //        present(viewController, animated: true) { [weak self] in
         //            // dismiss가 되면 여기가 실행이 된다.
@@ -93,12 +66,13 @@ class ListViewController: UIViewController {
     func setTitle() {
         let titleName = UILabel()
         titleName.text = "Todo List"
-        titleName.font = UIFont.boldSystemFont(ofSize: 20)
+        titleName.font = UIFont.boldSystemFont(ofSize: 30)
         titleName.sizeToFit()
-        
+
         navigationItem.titleView = titleName
+//        navigationItem.title = "Todo List"
         
-        self.navigationController?.navigationBar.tintColor = .blue
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     func setCurrentTime() {
@@ -126,7 +100,7 @@ extension ListViewController: UITableViewDataSource {
     
     // section 객수
     func numberOfSections(in tableView: UITableView) -> Int {
-        print("TypeList.allCases.count : \(TypeList.allCases.count)")
+        //        print("TypeList.allCases.count : \(TypeList.allCases.count)")
         return TypeList.allCases.count
     }
     
@@ -155,8 +129,8 @@ extension ListViewController: UITableViewDataSource {
             }
         }
         cellCount = [exerciseCount, studyCount, cookingCount]
-        print("section: \(section)")
-        print("cellCount: \(cellCount)")
+        //        print("section: \(section)")
+        //        print("cellCount: \(cellCount)")
         
         return cellCount[section]
     }
@@ -170,33 +144,32 @@ extension ListViewController: UITableViewDataSource {
         var isCompleted: Bool
         
         // Section에 따라서 Cell 생성
-        switch listType[indexPath.section] {
+        switch TodoList.listType[indexPath.section] {
         case TypeList.Exercise.rawValue:
-            //            print("listExercise[indexPath.row] : \(listExercise[indexPath.row])")
-            //            print("listExercise[indexPath.row] : \(listExercise[indexPath.row].values)")
-            //            print("type : \(type(of: listExercise[indexPath.row].values))")
+            
+            //            print("listExercise : \(TodoList.listExercise)")
+            //            print("indexPath.row : \(indexPath.row)")
+            //
+            //            print("listExercise[indexPath.row].keys : \(TodoList.listExercise[indexPath.row].keys)")
+            //            print("listExercise[indexPath.row].values : \(TodoList.listExercise[indexPath.row].values)")
+            //            print("type : \(type(of: TodoList.listExercise[indexPath.row].values))")
             //            print("변경")
-            //            print("listExercise[indexPath.row] : \(listExercise[indexPath.row].map{$0}[0].value.goal)")
-            dataKey = listExercise[indexPath.row].map{$0}[0].key
-            text = listExercise[indexPath.row].map{$0}[0].value.goal
-            isCompleted = listExercise[indexPath.row].map{$0}[0].value.iscompleted
+            
+            //            print("listExercise[indexPath.row] : \(TodoList.listExercise[indexPath.row].map{$0}[0].key)")
+            //            print("listExercise[indexPath.row] : \(TodoList.listExercise[indexPath.row].map{$0}[0].value.goal)")
+            dataKey = TodoList.listExercise[indexPath.row].map{$0}[0].key
+            text = TodoList.listExercise[indexPath.row].map{$0}[0].value.goal
+            isCompleted = TodoList.listExercise[indexPath.row].map{$0}[0].value.iscompleted
             break
         case TypeList.Study.rawValue:
-            dataKey = listStudy[indexPath.row].map{$0}[0].key
-            text = listStudy[indexPath.row].map{$0}[0].value.goal
-            isCompleted = listStudy[indexPath.row].map{$0}[0].value.iscompleted
+            dataKey = TodoList.listStudy[indexPath.row].map{$0}[0].key
+            text = TodoList.listStudy[indexPath.row].map{$0}[0].value.goal
+            isCompleted = TodoList.listStudy[indexPath.row].map{$0}[0].value.iscompleted
             break
         case TypeList.Cooking.rawValue:
-            dataKey = listCooking[indexPath.row].map{$0}[0].key
-//            print("listCooking[indexPath.row] : \(listCooking[indexPath.row])")
-//            print("listCooking[indexPath.row] : \(listCooking[indexPath.row].keys)")
-//            print("listCooking[indexPath.row] : \(listCooking[indexPath.row].map{$0}[0].key)")
-//            print("listCooking[indexPath.row] : \(listCooking[indexPath.row].values)")
-//            print("listCooking[indexPath.row] : \(type(of: listCooking[indexPath.row].values))")
-//            print("listCooking[indexPath.row] : \(type(of: listCooking[indexPath.row].map{$0}[0]))")
-//            print("listCooking[indexPath.row] : \(type(of: listCooking[indexPath.row].map{$0}[0].value))")
-            text = listCooking[indexPath.row].map{$0}[0].value.goal
-            isCompleted = listCooking[indexPath.row].map{$0}[0].value.iscompleted
+            dataKey = TodoList.listCooking[indexPath.row].map{$0}[0].key
+            text = TodoList.listCooking[indexPath.row].map{$0}[0].value.goal
+            isCompleted = TodoList.listCooking[indexPath.row].map{$0}[0].value.iscompleted
             break
         default:
             print("default")
@@ -209,10 +182,6 @@ extension ListViewController: UITableViewDataSource {
         cell.datakeyIndex = dataKey
         cell.cellSection = indexPath.section
         cell.cellIndex = indexPath.row
-        
-        print("cell.datakeyIndex : \(cell.datakeyIndex)")
-        print("cell.cellSection : \(cell.cellSection)")
-        print("cell.cellIndex : \(cell.cellIndex)")
         
         cell.todoName.text = text
         
@@ -261,7 +230,29 @@ extension ListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let delete = UIContextualAction(style: .destructive, title: nil) { (_, _, success) in
             
-            DataManager.shared.delete(index: indexPath.row)
+            var dataKey: Int
+            
+            // 데이터 삭제 시 section과 row 같이 확인
+            switch TodoList.listType[indexPath.section] {
+            case TypeList.Exercise.rawValue:
+                dataKey = TodoList.listExercise[indexPath.row].map{$0}[0].key
+                break
+            case TypeList.Study.rawValue:
+                dataKey = TodoList.listStudy[indexPath.row].map{$0}[0].key
+                break
+            case TypeList.Cooking.rawValue:
+                dataKey = TodoList.listCooking[indexPath.row].map{$0}[0].key
+                break
+            default:
+                print("default")
+                dataKey = 0
+            }
+            
+            DataManager.shared.delete(index: dataKey)
+            // 기존에 저장되어있던 데이터는 비우기
+            TodoList().clear()
+            // delete Data 완료한 후 새로 데이터 초기화
+            TodoList().initData()
             
             tableView.reloadData()
             success(true)

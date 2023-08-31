@@ -77,7 +77,7 @@ class MainViewController: UIViewController {
         mainStackView.setCustomSpacing(30, after: gotoCompletedView)
         
         // URL Session 이동
-        gotoURLView.setTitle("URL Button Button", for: .normal)
+        gotoURLView.setTitle("URL Button", for: .normal)
         gotoURLView.setTitleColor(.black, for: .normal)
         
         gotoURLView.tintColor = UIColor.green

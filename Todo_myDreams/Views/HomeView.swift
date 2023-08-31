@@ -32,7 +32,6 @@ class HomeView: UIView {
     
     private let homeImageView: UIImageView = {
         let imageView = UIImageView()
-        let borderColor = UIColor.yellow
         let spartImageUrl = URL(string: "https://spartacodingclub.kr/css/images/scc-og.jpg")!
         
         imageView.contentMode = .scaleAspectFit
@@ -54,7 +53,7 @@ class HomeView: UIView {
     }
     
     private func setupViews() {
-        backgroundColor = .red
+        backgroundColor = .white
         
         // self.translatesAutoresizingMaskIntoConstraints = false -> 여기서 self. 란? 메모리에 관련이 될 수 있다. 공부 시 참조
         translatesAutoresizingMaskIntoConstraints = false

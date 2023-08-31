@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB02042F2AA07ECB0076D351 /* TodoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB02042E2AA07ECB0076D351 /* TodoEditView.swift */; };
 		EB0AE83D2A78D99100A1BBA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE83C2A78D99100A1BBA4 /* AppDelegate.swift */; };
 		EB0AE83F2A78D99100A1BBA4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE83E2A78D99100A1BBA4 /* SceneDelegate.swift */; };
 		EB0AE8412A78D99100A1BBA4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB0AE8402A78D99100A1BBA4 /* MainViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB02042E2AA07ECB0076D351 /* TodoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoEditView.swift; sourceTree = "<group>"; };
 		EB0AE8392A78D99000A1BBA4 /* Todo_myDreams.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo_myDreams.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB0AE83C2A78D99100A1BBA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB0AE83E2A78D99100A1BBA4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			children = (
 				EB0AE8422A78D99100A1BBA4 /* Main.storyboard */,
 				EB4A79A32A98B98700C0CE3E /* HomeView.swift */,
+				EB02042E2AA07ECB0076D351 /* TodoEditView.swift */,
 				EB0AE8582A78FAE000A1BBA4 /* checkCompletePopup.swift */,
 				EBC7638F2A84F02300D55986 /* showCompleteInfo.swift */,
 				EBC7638E2A84C2C200D55986 /* TableViewCell */,
@@ -224,6 +227,7 @@
 				EB4A799F2A987E1500C0CE3E /* DataManager.swift in Sources */,
 				EB0AE8512A78DB8E00A1BBA4 /* ListViewController.swift in Sources */,
 				EB0AE85D2A81137300A1BBA4 /* ListTableViewCell.swift in Sources */,
+				EB02042F2AA07ECB0076D351 /* TodoEditView.swift in Sources */,
 				EB0AE8532A78DBA400A1BBA4 /* CompleteViewController.swift in Sources */,
 				EB0AE83F2A78D99100A1BBA4 /* SceneDelegate.swift in Sources */,
 				EB0AE8602A820CFE00A1BBA4 /* DataTodo.swift in Sources */,
