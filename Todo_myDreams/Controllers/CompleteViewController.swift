@@ -32,7 +32,7 @@ class CompleteViewController: UIViewController {
         
         navigationItem.titleView = titleName
         
-        self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.tintColor = .red
     }
     
     func setLabel(){
@@ -52,19 +52,14 @@ extension CompleteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         var cellCount = 0
         
-        for i in 0..<User.userTodo.count {
-            if User.userTodo[i].complete {
+        print("DataManager.shared.load().count : \(DataManager.shared.load().count)")
+        
+        for i in 0..<DataManager.shared.load().count {
+            if DataManager.shared.load()[i].iscompleted {
                 cellCount += 1
             }
         }
-        
-//        guard let sections = cellCount else {
-//            tableView.setEmptyView(title: "Saved Tweets and Notes will show up here.",
-//                                   message: "Tap the + button to get started.")
-//            return 0
-//        }
-//        let sectionInfo = sections[section]
-        
+        // cell이 없는 경우 표시 화면
         if cellCount == 0 {
             tableView.setEmptyView(title: "완료된 Todo List가 없습니다.",
                                    message: "Todo List 목록에서 완료하세요.")
@@ -80,15 +75,16 @@ extension CompleteViewController: UITableViewDataSource {
         
         var completedTodo: [Int] = []
         
-        for i in 0..<User.userTodo.count {
-            if User.userTodo[i].complete {
-                completedTodo.append(i)
+        for i in 0..<DataManager.shared.load().count { // 총 전체 데이터 중에서
+            if DataManager.shared.load()[i].iscompleted { // 완료된 데이터가 있는가요?
+                completedTodo.append(i) // 완료된 리스트 순으로 array에 저장
             }
         }
         
-        if User.userTodo[completedTodo[indexPath.row]].complete {
-            cell.todoName.text = User.userTodo[completedTodo[indexPath.row]].goal
-            cell.todoDate.text = User.userTodo[completedTodo[indexPath.row]].date
+        if !completedTodo.isEmpty { // 완료된 리스트가 있는 경우
+            
+            cell.todoName.text = DataManager.shared.load()[completedTodo[indexPath.row]].goal
+            cell.todoDate.text = DataManager.shared.load()[completedTodo[indexPath.row]].date
         }
         
         cell.setStackView()
@@ -101,7 +97,7 @@ extension CompleteViewController: UITableViewDataSource {
 extension CompleteViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("tab : \(indexPath)")
-        showPopUp(title: User.userTodo[indexPath.row].goal, message: User.userTodo[indexPath.row].date)
+        showPopUp(title: DataManager.shared.load()[indexPath.row].goal, message: DataManager.shared.load()[indexPath.row].date)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
