@@ -51,7 +51,7 @@ class MainViewController: UIViewController {
     
     func setButton() {
         // DataTodo List 이동
-        gotoListView.setTitle("DataTodo List Button", for: .normal)
+        gotoListView.setTitle("DataTodo List", for: .normal)
         gotoListView.setTitleColor(.black, for: .normal)
         
         gotoListView.tintColor = UIColor.green
@@ -64,7 +64,7 @@ class MainViewController: UIViewController {
         mainStackView.setCustomSpacing(30, after: gotoListView)
         
         // Completed DataTodo List 이동
-        gotoCompletedView.setTitle("Completed DataTodo List Button", for: .normal)
+        gotoCompletedView.setTitle("Completed DataTodo List", for: .normal)
         gotoCompletedView.setTitleColor(.black, for: .normal)
         
         gotoCompletedView.tintColor = UIColor.green
@@ -77,7 +77,7 @@ class MainViewController: UIViewController {
         mainStackView.setCustomSpacing(30, after: gotoCompletedView)
         
         // URL Session 이동
-        gotoURLView.setTitle("URL Button", for: .normal)
+        gotoURLView.setTitle("URL", for: .normal)
         gotoURLView.setTitleColor(.black, for: .normal)
         
         gotoURLView.tintColor = UIColor.green

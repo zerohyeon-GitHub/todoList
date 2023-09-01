@@ -46,9 +46,9 @@ class AddTodoViewController: UIViewController {
         setupDatePicker()
         
         setNavigationoBar()
+        
         setStackView()
         setTitle()
-        setButton()
         setTextView()
     }
     
@@ -60,22 +60,36 @@ class AddTodoViewController: UIViewController {
         self.navigationItem.title = "Todo List Add"
         self.navigationController?.navigationBar.tintColor = .black
         
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "저장", style: UIBarButtonItem.Style.plain, target: self, action: #selector(editDetailPage))
         self.navigationItem.rightBarButtonItem?.tintColor = UIColor.black
 
     }
     
     @objc private func editDetailPage(){
-//        // page 이동 함수
-//        let listViewController = ListViewController()
-//
-//        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main) // Main.stroyboard와 연동하는 작업 (변수에 담는 작업)
-//        guard let viewController = storyboard.instantiateViewController(identifier: storyboardID) as? ListViewController else { return }
-//
-//        navigationController?.pushViewController(viewController, animated: true)
-        print("editDetailPage")
-//        dismiss(animated: true)
-        navigationController?.popViewController(animated: true)
+        // 현재 시간
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let currentDate = formatter.string(from: Date())
+        
+        if tvType.text == "" {
+            alertMessage(message: "타입")
+        } else if tvName.text == "" {
+            alertMessage(message: "목표")
+        } else if tvName.text == "" {
+            alertMessage(message: "완료일")
+        } else if tvMemo.text == "" {
+            alertMessage(message: "MEMO")
+        } else {
+            let data: DataTodo = DataTodo(type: tvType.text ?? "", goal: tvName.text ?? "", date: tvDate.text ?? currentDate, iscompleted: false, memo: tvMemo.text ?? "")
+            
+            DataManager.shared.save(todo: [data])
+
+            print("saveData 완료")
+            TodoList().appendProject(index: DataManager.shared.load().count-1, todo: data)
+            
+            completion?()
+            navigationController?.popViewController(animated: true)
+        }
     }
     
     func setStackView(){
@@ -95,32 +109,27 @@ class AddTodoViewController: UIViewController {
     }
     
     func setTitle(){
-        todoType.text = "타입"
+        todoType.text = "타입을 선택해주세요!"
         todoType.font = UIFont.boldSystemFont(ofSize: 18)
         todoType.textColor = UIColor.black
         todoType.sizeToFit()
         todoType.textAlignment = .center
         
-        todoName.text = "목표"
+        todoName.text = "목표를 선정해주세요!"
         todoName.font = UIFont.boldSystemFont(ofSize: 18)
         todoName.textColor = UIColor.black
         todoName.sizeToFit()
         todoName.textAlignment = .center
         
-        todoDate.text = "완료일"
+        todoDate.text = "완료일을 설정해주세요!"
         todoDate.font = UIFont.boldSystemFont(ofSize: 18)
         todoDate.textColor = UIColor.black
         todoDate.sizeToFit()
         todoDate.textAlignment = .center
         
-        todoMemo.text = "MEMO"
+        todoMemo.text = "MEMO를 작성해주세요!"
         todoMemo.font = UIFont.boldSystemFont(ofSize: 18)
         todoMemo.textColor = UIColor.black
-    }
-    
-    func setButton(){
-        saveBtn.setTitle("저장", for: .normal)
-        saveBtn.contentHorizontalAlignment = .right
     }
     
     func setTextView(){
@@ -130,25 +139,14 @@ class AddTodoViewController: UIViewController {
     }
     
     // MARK: - Method & Action
-    @IBAction func saveData(_ sender: Any) {
-        // 현재 시간
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let currentDate = formatter.string(from: Date())
-        
-        let data: DataTodo = DataTodo(type: tvType.text ?? "", goal: tvName.text ?? "", date: tvName.text ?? currentDate, iscompleted: false, memo: tvName.text ?? "")
-        
-        DataManager.shared.save(todo: [data])
-        
-//        print("userdefault count : \(DataManager.shared.load().count)")
-//        for i in 0..<DataManager.shared.load().count {
-//            print("\(i) : \(DataManager.shared.load()[i])")
-//        }
-        print("saveData 완료")
-        TodoList().appendProject(index: DataManager.shared.load().count-1, todo: data)
-        
-        completion?()
-        self.dismiss(animated: true)
+    func alertMessage(message: String) {
+        if true {
+            let alert = UIAlertController(title: "할일 추가", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "확인", style: .default)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return
+        }
     }
     
 }

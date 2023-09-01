@@ -125,7 +125,7 @@ extension ListViewController: UITableViewDataSource {
                 cookingCount += 1
                 break
             default:
-                print("default")
+                print("numberOfRowsInSection : default")
             }
         }
         cellCount = [exerciseCount, studyCount, cookingCount]
@@ -172,7 +172,7 @@ extension ListViewController: UITableViewDataSource {
             isCompleted = TodoList.listCooking[indexPath.row].map{$0}[0].value.iscompleted
             break
         default:
-            print("default")
+            print("cellForRowAt : default")
             dataKey = 0
             text = "default"
             isCompleted = false
@@ -244,7 +244,7 @@ extension ListViewController: UITableViewDelegate{
                 dataKey = TodoList.listCooking[indexPath.row].map{$0}[0].key
                 break
             default:
-                print("default")
+                print("trailingSwipeActionsConfigurationForRowAt : default")
                 dataKey = 0
             }
             

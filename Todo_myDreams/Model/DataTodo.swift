@@ -42,7 +42,7 @@ class TodoList {
             case TypeList.Cooking.rawValue:
                 Self.listCooking.append([i : DataManager.shared.load()[i]])
             default:
-                print("default")
+                print("initData : default")
             }
         }
         
@@ -60,7 +60,7 @@ class TodoList {
         case TypeList.Cooking.rawValue:
             Self.listCooking.append([index : todo])
         default:
-            print("default")
+            print("appendProject : default")
         }
     }
     
